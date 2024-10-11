@@ -7,10 +7,14 @@ from django.db.models import Q
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.exceptions import ChannelFull
 import asyncio
+import os
 
 logger = logging.getLogger(__name__)
 
-redis_client = redis.StrictRedis(host='redis', port=6379, db=0)
+redis_host = os.getenv('REDIS_HOST', 'redis')
+redis_port = int(os.getenv('REDIS_PORT', 6379))
+
+redis_client = redis.StrictRedis(host=redis_host, port=redis_port, db=0)
 
 # remove redis current db data
 redis_client.flushdb()

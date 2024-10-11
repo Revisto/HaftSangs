@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
   redis:
@@ -7,12 +7,10 @@ services:
       - "6379:6379"
 
   backend:
-    build:
-      context: ./backend
+    build: ./backend
+    command: ["daphne", "-b", "0.0.0.0", "-p", "8000", "game_server.asgi:application"]
     volumes:
       - ./backend:/app
-    ports:
-      - "8000:8000"
     depends_on:
       - redis
     environment:
