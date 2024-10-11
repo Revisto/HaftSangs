@@ -72,19 +72,9 @@ func handle_input(event):
 			elif not event.pressed and dragging:
 				print("Stopping dragging of obstacle")
 				stop_dragging()
-	elif event is InputEventScreenTouch or event is InputEventScreenDrag:
-		if event.pressed and is_touch_nearby(event):
-			print("Starting to drag obstacle")
-			start_dragging()
-		elif not event.pressed and dragging:
-			print("Stopping dragging of obstacle")
-			stop_dragging()
 
 func is_mouse_nearby() -> bool:
 	return get_global_mouse_position().distance_to(global_position) < 50
-
-func is_touch_nearby(event) -> bool:
-	return event.position.distance_to(global_position) < 50
 
 func _process(delta):
 	if dragging:

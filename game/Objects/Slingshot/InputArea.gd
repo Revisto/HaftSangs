@@ -19,9 +19,7 @@ func _input(event):
 		return   
 
 	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			touch = true
-		else:
+		if not event.is_pressed():
 			emit_signal("slingshot_released")
 			touch = false
 
@@ -40,13 +38,3 @@ func _on_InputArea_input_event(viewport, event: InputEvent, shape_idx):
 		if event.is_pressed():
 			emit_signal("slingshot_grabbed")
 			touch = true
-		else:
-			emit_signal("slingshot_released")
-			touch = false
-
-			 
-			locked = true
-
-	if event is InputEventScreenDrag:
-		if touch:
-			emit_signal("slingshot_moved", event.position)

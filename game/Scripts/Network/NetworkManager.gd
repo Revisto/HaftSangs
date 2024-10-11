@@ -1,6 +1,6 @@
 extends Node
 
-export(String) var websocket_url = "ws://127.0.0.1:8000/ws/game/"
+export(String) var websocket_url = "ws://ws.haftsangs.ir/ws/game/"
 
 var _client = WebSocketClient.new()
 var obstacles_data = {}
@@ -56,7 +56,7 @@ func _on_connection_error():
 
 func _on_connection_established(proto = ""):
 	print("NetworkManager: Connected with protocol: ", proto)
-	reconnect_attempts = 0   
+	reconnect_attempts = 0  # Reset attempts on successful connection
 
 func _on_data_received():
 	var data = _client.get_peer(1).get_packet().get_string_from_utf8()

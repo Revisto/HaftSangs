@@ -10,8 +10,8 @@ func _ready():
 func _unhandled_input(event):
 	if disabled:
 		return
-
-	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+	# fix button on smartphone
+	if event is InputEventScreenTouch:
 		if _is_btn_pressed(self, event):
 			emit_signal("pressed")
 
