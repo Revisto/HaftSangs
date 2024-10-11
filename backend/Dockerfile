@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["daphne", "-p", "8000", "game_server.asgi:application"]
+CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "game_server.asgi:application"]
