@@ -1,0 +1,167 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scenes/Levels/LevelBase/AreaOfInterest/AreaOfInterest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/graphics/Backgrounds/GROUND.png" type="Texture" id=2]
+[ext_resource path="res://Assets/graphics/Backgrounds/sky.png" type="Texture" id=5]
+[ext_resource path="res://Objects/Obstacles/WoodObstacle/WoodObstacle1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Sang/Sang1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Obstacles/StoneObstacle/StoneObstacle1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/Sang/Sang2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Sang/Sang3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/Sang/Sang4.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/Sang/Sang5.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/Sang/Sang6.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Objects/Sang/Sang7.tscn" type="PackedScene" id=15]
+
+[sub_resource type="TileSet" id=2]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.0157068, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 8 )
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0.34902, 0.741176, 0.933333, 1, 0.34902, 0.741176, 0.933333, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1500, 733.231 )
+
+[node name="Level1" type="Node2D"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="blue_sky" type="Sprite" parent="Background"]
+position = Vector2( 919.254, 112.749 )
+scale = Vector2( 0.377642, 0.380153 )
+texture = ExtResource( 5 )
+
+[node name="blue_sky2" type="Sprite" parent="Background"]
+position = Vector2( -583, 112.749 )
+scale = Vector2( 0.377642, 0.380153 )
+texture = ExtResource( 5 )
+
+[node name="blue_sky3" type="Sprite" parent="Background"]
+position = Vector2( 2422, 112.749 )
+scale = Vector2( 0.377642, 0.380153 )
+texture = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 70, 70 )
+format = 1
+tile_data = PoolIntArray( 327680, 3, 0, 327682, 2, 0, 327688, 3, 0, 327692, 2, 0, 327695, 3, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 393248, 0, 0, 393249, 0, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="TileMap"]
+position = Vector2( 3421, 1329 )
+rotation = 1.5708
+scale = Vector2( 0.332993, 4888.85 )
+texture = SubResource( 4 )
+centered = false
+
+[node name="BlueSky" type="Sprite" parent="TileMap"]
+position = Vector2( 2946, -1483 )
+rotation = 1.5708
+scale = Vector2( 0.594707, 4191.03 )
+texture = SubResource( 6 )
+centered = false
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2( -4, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite1" type="Sprite" parent="Ground"]
+position = Vector2( 963.676, 689.092 )
+scale = Vector2( 0.408338, 0.408338 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Ground"]
+position = Vector2( -669.324, 689.092 )
+scale = Vector2( 0.408338, 0.408338 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="Ground"]
+position = Vector2( 2597, 689.092 )
+scale = Vector2( 0.408338, 0.408338 )
+texture = ExtResource( 2 )
+
+[node name="AreaOfInterest" parent="." instance=ExtResource( 1 )]
+position = Vector2( 865.14, -10.6118 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfInterest"]
+shape = SubResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sangs" type="Node" parent="."]
+
+[node name="Sang1" parent="Sangs" instance=ExtResource( 8 )]
+position = Vector2( 1063, 391 )
+
+[node name="Sang2" parent="Sangs" instance=ExtResource( 10 )]
+position = Vector2( 1065, 326 )
+
+[node name="Sang3" parent="Sangs" instance=ExtResource( 11 )]
+position = Vector2( 1062, 259 )
+
+[node name="Sang4" parent="Sangs" instance=ExtResource( 12 )]
+position = Vector2( 1062, 206 )
+
+[node name="Sang5" parent="Sangs" instance=ExtResource( 13 )]
+position = Vector2( 1059, 160 )
+
+[node name="Sang6" parent="Sangs" instance=ExtResource( 14 )]
+position = Vector2( 1058, 111 )
+
+[node name="Sang7" parent="Sangs" instance=ExtResource( 15 )]
+position = Vector2( 1052, 61 )
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="WoodObstacle1" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1614, 218 )
+
+[node name="WoodObstacle2" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1637, 142 )
+
+[node name="WoodObstacle3" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1630, 383 )
+
+[node name="WoodObstacle4" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1653, 310 )
+
+[node name="StoneObstacle1" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 807, 301 )
+
+[node name="StoneObstacle2" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 687, 301 )
+rotation = 3.14159
+
+[node name="StoneObstacle3" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 752, 140 )
+rotation = 4.71238
+
+[node name="StoneObstacle4" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 389, 296 )
+rotation = 3.14159

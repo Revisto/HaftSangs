@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/graphics/Backgrounds/sky.png" type="Texture" id=18]
+
+[node name="TextureRect2" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.072
+margin_left = -668.0
+margin_top = -19.0
+margin_right = 2382.0
+margin_bottom = 1402.12
+rect_scale = Vector2( 0.603746, 0.603746 )
+texture = ExtResource( 18 )
+stretch_mode = 2
