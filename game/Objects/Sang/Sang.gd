@@ -38,7 +38,8 @@ func reset_to_initial_state():
 	mode = MODE_RIGID
 	set_mode(RigidBody2D.MODE_RIGID)
 	
-	 
+	score_awarded = false
+	
 	visible = true
 	
 	print("Sang reset to initial state at ", global_position)
