@@ -33,8 +33,6 @@ func _ready():
 
 	network_manager.connect("waiting_for_player", self, "_on_waiting_for_player")
 	network_manager.connect("match_found", self, "_on_match_found")
-	network_manager.connect("obstacles_updated", self, "_on_obstacles_updated")
-	network_manager.connect("slingshot_updated", self, "_on_slingshot_updated")
 
 	var gui_node = get_node_or_null("../GUI")
 	if gui_node == null:

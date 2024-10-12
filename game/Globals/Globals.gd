@@ -42,7 +42,6 @@ func goto_scene(new_scene: String, params = {}):
 	if new_scene.begins_with("res://Scenes/Levels/"):
 		game_manager = preload("res://Managers/GameManager.gd").new()
 		add_child(game_manager)
-		game_manager.connect("lock_controls", self, "_on_lock_controls")
 
 func get_level_path(level: int) -> String:
 	var levels_base_path = "res://Scenes/Levels/LevelNodes/"
