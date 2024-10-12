@@ -7,7 +7,7 @@
 extents = Vector2( 70, 21.5 )
 
 [node name="Sang" type="RigidBody2D" groups=["sang"]]
-mass = 6.0
+mass = 1.75
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
