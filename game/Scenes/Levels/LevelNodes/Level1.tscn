@@ -165,16 +165,16 @@ position = Vector2( 1052, 61 )
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="WoodObstacle1" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1614, 218 )
+position = Vector2( 1419, 89 )
 
 [node name="WoodObstacle2" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1637, 142 )
+position = Vector2( 1415, 348 )
 
 [node name="WoodObstacle3" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1630, 383 )
+position = Vector2( 1414, 262 )
 
 [node name="WoodObstacle4" parent="Obstacles" instance=ExtResource( 7 )]
-position = Vector2( 1653, 310 )
+position = Vector2( 1417, 179 )
 
 [node name="StoneObstacle1" parent="Obstacles" instance=ExtResource( 9 )]
 position = Vector2( 807, 301 )
@@ -184,9 +184,9 @@ position = Vector2( 687, 301 )
 rotation = 3.14159
 
 [node name="StoneObstacle3" parent="Obstacles" instance=ExtResource( 9 )]
-position = Vector2( 752, 140 )
+position = Vector2( 808, 152 )
 rotation = 4.71238
 
 [node name="StoneObstacle4" parent="Obstacles" instance=ExtResource( 9 )]
-position = Vector2( 389, 296 )
+position = Vector2( 1265, 272 )
 rotation = 3.14159
