@@ -1,6 +1,6 @@
 extends Node
 
-export(String) var websocket_url = "ws://ws.haftsangs.ir/ws/game/"
+export(String) var websocket_url = "wss://ws.haftsangs.ir/ws/game/"
 
 var _client = WebSocketClient.new()
 var obstacles_data = {}
