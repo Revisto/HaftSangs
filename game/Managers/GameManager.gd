@@ -95,7 +95,7 @@ func _process(delta):
 				if dot_count == 0:
 					removing_dots = false
 			var dots = ".".repeat(dot_count)
-			wait_status.text = "Waiting For Player\nWait" + dots
+			wait_status.text = "Waiting For Player\n\nOpen HaftSangs.ir in Another Tab to Play With Yourself\n\nWait" + dots
 		return
 
 	if round_count >= 1:

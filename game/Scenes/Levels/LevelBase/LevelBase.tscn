@@ -245,6 +245,9 @@ custom_colors/font_color = Color( 0.759698, 0.748489, 0.972656, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_as_outline = 1
 text = "Waiting For Player
+
+Open HaftSangs.ir in Another Tab to Play With Yourself
+
 Wait"
 
 [node name="ResetOverlay" type="Control" parent="GUI"]
