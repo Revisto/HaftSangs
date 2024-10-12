@@ -93,7 +93,7 @@ func _process(delta):
 				if dot_count == 0:
 					removing_dots = false
 			var dots = ".".repeat(dot_count)
-			wait_status.text = "Waiting For Player\n\nOpen HaftSangs.ir in Another Tab to Play With Yourself\n\nWait" + dots
+			wait_status.text = "Waiting For Player\n\nOpen HaftSangs.ir in Another Tab to Play With Yourself\nTurn Off Your VPN\n\nWait" + dots
 		return
 
 	if round_count >= 1:
@@ -312,6 +312,6 @@ func get_active_projectiles():
 	var active_projectiles = 0
 	var projectiles = get_tree().get_nodes_in_group("projectile")
 	for projectile in projectiles:
-		if projectile.launched:
+		if projectile.launched == false:
 			active_projectiles += 1
 	return active_projectiles
