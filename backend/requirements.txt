@@ -3,3 +3,4 @@ channels
 channels_redis
 django-redis
 daphne
+twisted[http2,tls]
