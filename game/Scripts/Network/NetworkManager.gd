@@ -6,6 +6,9 @@ var _client = WebSocketClient.new()
 var obstacles_data_buffer = {}
 var slingshot_data_buffer = {}
 
+var obstacles_data = {}
+var slingshot_data = {}
+
 var sender_id = str(OS.get_unix_time()) + "_" + str(randi())
 var reconnect_attempts = 0
 var max_reconnect_attempts = 5
