@@ -21,7 +21,7 @@ client.py & client2.py:** 🛠️ Client testing scripts.
 ## 🚦 How to Run
 1. **Spin up Redis:**
    ```sh
-   docker run --name backend-redis -d redis
+   docker run -d --name backend-redis -p 6379:6379 redis
    ```
 
 2. **Build and run the backend:**
