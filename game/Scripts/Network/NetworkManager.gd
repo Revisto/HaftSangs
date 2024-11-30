@@ -1,10 +1,10 @@
 extends Node
 
-export(String) var websocket_url = "wss://ws.haftsangs.ir/ws/game/"
+export(String) var websocket_url = "ws://ws.haftsangs.ir/ws/game/"
 
 var _client = WebSocketClient.new()
-var obstacles_data = {}
-var slingshot_data = {}
+var obstacles_data_buffer = {}
+var slingshot_data_buffer = {}
 
 var sender_id = str(OS.get_unix_time()) + "_" + str(randi())
 var reconnect_attempts = 0
@@ -16,10 +16,17 @@ signal waiting_for_player()
 signal match_found(role)
 signal connection_failed()
 
+var send_timer = Timer.new()
+
 func _ready():
 	print("NetworkManager: _ready() called")
 	connect_signals()
 	initiate_connection()
+	# Setup the send timer
+	send_timer.set_wait_time(0.2)  # 200 milliseconds
+	send_timer.set_one_shot(false)
+	send_timer.connect("timeout", self, "_on_send_timer_timeout")
+	add_child(send_timer)
 
 func connect_signals():
 	_client.connect("connection_closed", self, "_on_connection_closed")
@@ -57,14 +64,13 @@ func _on_connection_error():
 func _on_connection_established(proto = ""):
 	print("NetworkManager: Connected with protocol: ", proto)
 	reconnect_attempts = 0  # Reset attempts on successful connection
+	send_timer.start()  # Start the timer when connected
 
 func _on_data_received():
 	var data = _client.get_peer(1).get_packet().get_string_from_utf8()
 	var json_data = JSON.parse(data)
-
 	if json_data.error == OK:
 		print("NetworkManager: Received data: ", json_data.result)
-
 		if json_data.result.has("match_found"):
 			emit_signal("match_found", json_data.result["match_found"]["role"])
 		if json_data.result.has("match_waiting"):
@@ -83,22 +89,37 @@ func _process(delta):
 
 func send_obstacle_update(obstacle_name, position, rotation, dragging):
 	var position_list = [position.x, position.y]
-	var new_obstacles_data = {obstacle_name: {"position": position_list, "rotation": rotation, "dragging": dragging}}
-	var json_data = {"sender_id": sender_id, "obstacles_data": new_obstacles_data}
-	_client.get_peer(1).put_packet(to_json(json_data).to_utf8())
+	# Buffer the data
+	obstacles_data_buffer[obstacle_name] = {
+		"position": position_list,
+		"rotation": rotation,
+		"dragging": dragging
+	}
 
 func send_slingshot_update(position, state, launch_impulse):
 	var position_list = [position.x, position.y]
-	var json_data = {
-		"sender_id": sender_id,
-		"slingshot_data": {
-			"position": position_list,
-			"state": state,
-			"launch_impulse": [launch_impulse.x, launch_impulse.y]
-		}
+	# Buffer the data
+	slingshot_data_buffer = {
+		"position": position_list,
+		"state": state,
+		"launch_impulse": [launch_impulse.x, launch_impulse.y]
 	}
-	_client.get_peer(1).put_packet(to_json(json_data).to_utf8())
 
 func request_match():
 	var json_data = {"sender_id": sender_id, "request_match": true}
 	_client.get_peer(1).put_packet(to_json(json_data).to_utf8())
+
+func _on_send_timer_timeout():
+	# Send buffered data to the server
+	var json_data = {"sender_id": sender_id}
+	var has_data = false
+	if obstacles_data_buffer.size() > 0:
+		json_data["obstacles_data"] = obstacles_data_buffer
+		obstacles_data_buffer = {}  # Clear the buffer
+		has_data = true
+	if slingshot_data_buffer.size() > 0:
+		json_data["slingshot_data"] = slingshot_data_buffer
+		slingshot_data_buffer = {}  # Clear the buffer
+		has_data = true
+	if has_data:
+		_client.get_peer(1).put_packet(to_json(json_data).to_utf8())
