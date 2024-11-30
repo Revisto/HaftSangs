@@ -7,7 +7,7 @@
 To run the server, use the following command:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 9000
 ```
 
 ## 📂 Directory Structure
